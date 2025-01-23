@@ -5,6 +5,7 @@ tmp/
 
 *.gitignore text eol=lf
 *.txt text eol=lf
+*.md text eol=lf
 *.csv
 *.pyc
 **/__pycache__/
