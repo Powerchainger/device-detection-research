@@ -8,7 +8,7 @@ import torch.nn as nn
 
 from sklearn.preprocessing import StandardScaler
 
-root = Path(os.getcwd()).resolve()#.parents[0]
+root = Path(os.getcwd()).resolve()
 sys.path.append(str(root))
 from experiments.data_utils import *
 from src.TransAppModel.TransApp import *
@@ -111,8 +111,8 @@ def get_model_inst(m, win, dim_model, path_select_core=None):
     return TApp
 
 if __name__ == "__main__":
-    path_results = str(root) + '/results1/TransAppResults/'
-    path_pretrained_core = 'results1/TransAppPretrained/'
+    path_results = str(root) + '/TransAppResults/'
+    path_pretrained_core = '/TransAppPretrained/'
 
     case_name  = str(sys.argv[1]) # str(sys.argv[1]) if len(sys.argv) > 1 else 'cooker_case'
     model_name = str(sys.argv[2]) # str(sys.argv[2]) if len(sys.argv) > 2 else 'TransApp'
