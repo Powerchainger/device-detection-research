@@ -1,9 +1,10 @@
 # device-detection-research
 Repository for all the research regarding device detection
 
-#### Locally 
+#### Locally: 
 - Python 3.8.10
 - CUDA_11.1 build
+- pip install -r requirements.txt
 #### Habrock:
 - module load Python/3.8.6-GCCcore-10.2.0 
 - module load CUDA/11.4.1
