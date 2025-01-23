@@ -3,6 +3,8 @@ data/Labels/
 data/ExogeneData/
 tmp/
 
+*.gitignore text eol=lf
+*.txt text eol=lf
 *.csv
 *.pyc
 **/__pycache__/
