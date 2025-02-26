@@ -2,7 +2,7 @@
 from experiments.data_utils import *
 from src.AD_Framework.Framework import *
 from src.TransAppModel.TransApp import *
-
+import json
 
 def get_model_inst(m, win, dim_model, path_select_core=None):
 
@@ -48,11 +48,7 @@ if __name__ == "__main__":
     # TODO: First load the model for one case e.g. cooker_case
     #Get model path
     root = Path(os.getcwd()).resolve().parents[0]
-    path = os.path.join(root, 'riperino')
-    # Uncomment this to load a model with a specific seed. In this case 0
-    # model_path = os.path.join(path, str(case_name), 'TransAppPT96_1_0.pt')
-    # model = get_model_inst(m=m, win=win, dim_model=96, path_select_core=model_path)
-    # model.to('cuda')
+    path = os.path.join(root, 'TransAppResults')
     #--------------------------------------------------------------------------------------------------------------------------
     #--------------------------------------------------------------------------------------------------------------------------
     for seed_value in range(0,3):
