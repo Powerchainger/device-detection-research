@@ -1,6 +1,8 @@
 data/Inputs/
 data/Labels/
 data/ExogeneData/
+data/result_files/
+data/extracted_probabilities_seed/
 tmp/
 
 *.gitignore text eol=lf
