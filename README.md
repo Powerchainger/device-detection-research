@@ -43,7 +43,7 @@ This repository implements a modular pipeline for device detection using user en
 
 ## Dataset
 
-Preprocessed CER dataset is recommended. Download from [Google Drive](https://drive.google.com/drive/folders/1oaskXOoErac9S-xVsqZRCh71jusHwn8L?usp=share_link) and copy the `Inputs`, `Labels`, and `ExogeneData` folders into `datasets/`.
+Preprocessed CER dataset is recommended. Download from [Google Drive](https://drive.google.com/drive/folders/1QKyRkXv3lA7JHNFDuc_ZvvtrwLrA7oJk?usp=drive_link) and copy the `Inputs`, `Labels`, and `ExogeneData` folders into `datasets/`.
 
 **Note:** Access to CER data from ISSDA is required. Please acknowledge the CER Smart Metering Project and ISSDA in any work.
 
