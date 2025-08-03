@@ -53,7 +53,7 @@ Run the pipeline using:
 ```bash
 python main.py --<args>
 ```
-You can configure and run individual stages by modifying `main.py` or using configuration files in `config/`. Inspect cmd arguments with `python main.py --help` for more details.
+You can configure and run individual stages by invoking `main.py` with different arguments. Inspect cmd arguments with `python main.py --help` for more details.
 
 ## External Dataset Structure
 
