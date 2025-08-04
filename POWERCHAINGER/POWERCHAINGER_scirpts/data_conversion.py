@@ -16,7 +16,7 @@ os.makedirs(energy_dir, exist_ok=True)
 
     
 if __name__ == "__main__":
-    os.chdir(ROOT_DIR / "POWERCHAINGER" / "POWERCHAINGER_datasets/users_raw")
+    os.chdir(ROOT_DIR / "POWERCHAINGER" / "POWERCHAINGER_datasets" / "users_raw")
     for csv_file in os.listdir():
         if csv_file.endswith(".csv"):
             df = pd.read_csv(csv_file, encoding='utf-16', skiprows=4, header=None, delim_whitespace=True)
