@@ -23,7 +23,8 @@ def run_inference(input_path=None, house_name=None):
                                 TRAINING_PARAMS['window_size'],
                                 TRAINING_PARAMS['dim_model'],
                                 path_select_core=case_path,
-                                mode='classification'
+                                mode='classification',
+                                device=device
                                 )
         model.to(device)
         inf_data = TSDataset(data, labels=None, scaler=True, scale_dim=[0])

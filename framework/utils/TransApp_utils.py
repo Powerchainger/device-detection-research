@@ -1,7 +1,7 @@
 import torch
 from framework.TransAppModel.TransApp import TransApp
 
-def get_model_inst(m, win, dim_model, path_select_core=None, mode='pretraining'):
+def get_model_inst(m, win, dim_model, path_select_core=None, mode='pretraining', device='gpu'):
 
     TApp = TransApp(max_len=win, c_in=m,
                     mode=mode,
@@ -18,5 +18,8 @@ def get_model_inst(m, win, dim_model, path_select_core=None, mode='pretraining')
                     c_reconstruct=1, apply_gap=True, nb_class=2)
     
     if path_select_core is not None:
-        TApp.load_state_dict(torch.load(path_select_core)['model_state_dict'])
+        if device == 'cpu':
+            TApp.load_state_dict(torch.load(path_select_core, map_location=torch.device('cpu'))['model_state_dict'])
+        else:
+            TApp.load_state_dict(torch.load(path_select_core)['model_state_dict'])
     return TApp
