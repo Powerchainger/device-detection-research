@@ -1,0 +1,9 @@
+Case,Method_Tag,Classifier,F1_Score,Feature_Selection,Quantile
+cooker_case,features,RandomForest,0.8928571428571429,,
+dishwasher_case,filter,RandomForest,0.8008534850640113,kbest_features,
+desktopcomputer_case,filter,SVM,0.7213930348258706,kbest_features,
+tumbledryer_case,raw,RandomForest,0.7857142857142857,,
+tv_greater21inch_case,features,RandomForest,0.8392857142857143,,
+tv_less21inch_case,filter,RandomForest,0.6339869281045751,mi_features,
+laptopcomputer_case,voter,Voter (q=0.1),0.6404937626543008,,0.1
+waterheater_case,raw,SVM,0.7321428571428571,,
