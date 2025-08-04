@@ -4,6 +4,7 @@ This repository implements a modular pipeline for device detection using user en
 
 ## Directory Structure
 
+- `POWERCHANGER/` - Raw datasets, mapper scripts, inference results
 - `checkpoints/` — Pretrained model checkpoints, classification headers, and extracted data for voter training.
 - `config/` — Configuration scripts for pipeline settings.
 - `datasets/` — Contains datasets. Add your own datasets here; update helper functions in `data_utils.py` as needed.
@@ -76,6 +77,19 @@ To add new devices to the pipeline, follow these steps:
 python main.py --new_device --input_path <path_to_your_dataset> --data_name <your_dataset_name>
 ```
 This will create a new classification header for the new device, which can later be used for classification. `--input_path` should point to the folder containing the `Inputs`, `ExogeneData`, and `Labels` folders, and `--data_name` should be the name of your dataset (e.g., `my_dataset`).
+
+## Inference 
+To run inference on a new dataset, follow these steps:
+
+1. **Place your dataset**: Ensure your dataset exists in the `POWERCHAINGER/POWERCHAINGER_datasets/users_raw/` directory.
+
+2. **Run the `data_conversion.py` script**: This script will convert your dataset into the required format for inference. Use the following command: This script can be found in `POWERCHAINGER/POWERCHAINGER_scripts/` directory.
+
+3. **Run the inference script**: After conversion, run the inference script to classify devices in your dataset:
+   ```bash
+   python main.py --inference --input_path <path_to_your_dataset> --data_name <your_dataset_name>
+   ```
+   Replace `<path_to_your_dataset>` with the path to your dataset and `<your_dataset_name>` with the name of your dataset.
 
 ## License
 
