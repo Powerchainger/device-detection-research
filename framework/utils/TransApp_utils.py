@@ -1,7 +1,7 @@
 import torch
 from framework.TransAppModel.TransApp import TransApp
 
-def get_model_inst(m, win, dim_model, path_select_core=None, mode='pretraining', device='gpu'):
+def get_model_inst(m, win, dim_model, path_select_core=None, mode='pretraining', device='cuda'):
 
     TApp = TransApp(max_len=win, c_in=m,
                     mode=mode,

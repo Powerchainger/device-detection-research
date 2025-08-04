@@ -4,17 +4,23 @@ import pandas as pd
 import numpy as np
 import joblib
 
-from utils.data_utils import get_data_inference
+from utils.data_utils import get_data_inference, create_dir
 from utils.feature_utils import create_data
 from framework.AD_Framework.Framework import TSDataset
 from framework.utils.TransApp_utils import get_model_inst
-from config.config import TRAINING_PARAMS, CHECKPOINT_DIR, CASES, DATA_PARAMS
+from config.config import TRAINING_PARAMS, CHECKPOINT_DIR, CASES, DATA_PARAMS, ROOT_DIR
+
+path = create_dir(ROOT_DIR / "POWERCHAINGER" / "Inference_Results")
 
 def run_inference(input_path=None, house_name=None):
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     data = get_data_inference(input_path, house_name, exo_variable=DATA_PARAMS)
     results_df = pd.read_csv(CHECKPOINT_DIR / "case_best" / "results.csv")
     results_df = results_df.where(pd.notna(results_df), None)
+    result_dict = {
+        "is_present": {},
+        "confidence": {}
+    }
     print(f"Testing existence of devices to the testing house.")
     for case in CASES:
         case_path = CHECKPOINT_DIR / 'case_headers' / f"{case}.pt"
@@ -49,9 +55,14 @@ def run_inference(input_path=None, house_name=None):
             # Apply quantile voting across 25 window probabilities
             logits_array = np.array(logits_proba[0])
             house_pred = np.quantile(logits_array, q=quantile)
-            final_pred = np.rint(house_pred)  
-
+            final_pred = np.rint(house_pred)
+            
+            # ============= Store results in the result_dict =============
+            result_dict["is_present"][case] = 1 if final_pred == 1 else 0
+            result_dict["confidence"][case] = float(house_pred)
+            # =============================================================
             is_present = "present" if final_pred == 1 else None
+            
             if is_present:
                 print(f"Device {case} is considered as {is_present} (via VOTER at q={quantile}).")
             else:
@@ -80,10 +91,15 @@ def run_inference(input_path=None, house_name=None):
                 prediction = clf.predict_proba(logits_data)
 
             is_present = "present" if prediction[0][1] > 0.5 else None
+            
+            # ============= Store results in the result_dict ============= 
+            result_dict["is_present"][case] = 1 if prediction[0][1] > 0.5 else 0
+            result_dict["confidence"][case] = float(prediction[0][1])
+            # =============================================================
+            
             if is_present:
                 print(f"Device {case} is considered as {is_present} with confidence {prediction[0][1]:.2f}.")
             else:
                 print(f"Device {case} does not exist in the testing house.")
-
-if __name__ == "__main__":
-    run_inference()
+    results_df = pd.DataFrame.from_dict(result_dict).T
+    results_df.to_csv(f"{path}/{house_name}_inference_results.csv", index=True)
