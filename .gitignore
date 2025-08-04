@@ -1,17 +1,34 @@
-# Ignore virtual environment directories
+# --- Virtual environment ---
 .venv/
-checkpoints/**
-!checkpoints/case_best/
-!checkpoints/case_best/results.csv
-# Ignore model checkpoint
-model.pt
-#Ignore other files
+
+# --- Ignore all CSV and notebooks ---
 *.csv
 *.ipynb
-# Ignore Jupyter Notebook checkpoints
+
+# --- Ignore Fully Pretrained TransApp checkpoint ---
+model.pt
+
+# --- Jupyter & Python cache ---
 .ipynb_checkpoints/
-# Ignore Python cache
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# --- Ignore everything in checkpoints ---
+checkpoints/**/*
+# But allow specific subfolders/files
+!checkpoints/case_best/
+!checkpoints/case_best/results.csv
+!checkpoints/case_headers/
+!checkpoints/case_headers/**
+!checkpoints/trained_voters/
+!checkpoints/trained_voters/**
+
+# --- Ignore everything in POWERCHAINGER ---
+POWERCHAINGER/**/*
+# But allow scripts and datasets folder (structure only)
+!POWERCHAINGER/POWERCHAINGER_scripts/
+!POWERCHAINGER/POWERCHAINGER_scripts/**
+!POWERCHAINGER/POWERCHAINGER_datasets/
+!POWERCHAINGER/POWERCHAINGER_datasets/users_raw/
