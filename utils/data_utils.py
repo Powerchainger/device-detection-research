@@ -246,7 +246,7 @@ def get_data_inference(input_path, house_name, seed=0, win=1024, exo_variable=[]
     # This line is for code testing. Comment if testing on Powerchainger house data
     #data = pd.read_csv(path_data+'Inputs/x_residential_25728.csv').set_index('id_pdl').iloc[[0]]
     # Uncomment this line for POWERCHAINGER house data
-    data = pd.read_csv(f"{input_path}/Inputs/{house_name}.csv").set_index('id_pdl').iloc[[0]]
+    data = pd.read_csv(f"{input_path}/Inputs/{house_name}.csv").set_index('id_pdl')
     if exo_variable:
         # This line is for code testing. Comment if testing on Powerchainger house data
         # extra = pd.read_csv(path_data+'ExogeneData/extra_25728.csv')

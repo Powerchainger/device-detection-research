@@ -1,6 +1,8 @@
 # Ignore virtual environment directories
 .venv/
-checkpoints/
+checkpoints/**
+checkpoints/case_best/
+!checkpoints/case_best/results.csv
 # Ignore model checkpoint
 model.pt
 #Ignore other files
