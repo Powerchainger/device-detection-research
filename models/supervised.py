@@ -8,7 +8,7 @@ path_core = str(CHECKPOINT_DIR) + "\\TransApp" + str(TRAINING_PARAMS['dim_model'
 dir_path = create_dir(str(CHECKPOINT_DIR) + "\\case_headers")
 voter_path  = create_dir(str(CHECKPOINT_DIR) + "\\voter_metrics")
 
-def run_training(data_name='x_residential_25728.csv', extra_name='extra_25728'):
+def run_training(data_name=None, extra_name=None):
     train_dict = {"lr": TRAINING_PARAMS['lr'], 
                     "wd": 1e-3, #Different weight decay for training 
                     "batch_size": TRAINING_PARAMS['batch_size'], 

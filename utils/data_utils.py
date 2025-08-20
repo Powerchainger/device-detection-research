@@ -164,7 +164,7 @@ def split_train_valid_test_pdl(df_data, test_size=0.2, valid_size=0, nb_label_co
 
 def CER_get_data_case(case_name, exo_variable=[], win=1024, ratio_resample=0.8, seed=0, 
                       input_path=None, data_name=None):
-    if not input_path:
+    if not input_path and not data_name:
         data = pd.read_csv(f"{path_data}Inputs/x_residential_25728.csv").set_index('id_pdl')
         case = pd.read_csv(f"{path_data}Labels/{case_name}.csv").set_index('id_pdl')
         if exo_variable:
