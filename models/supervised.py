@@ -8,7 +8,7 @@ path_core = str(CHECKPOINT_DIR) + "\\TransApp" + str(TRAINING_PARAMS['dim_model'
 dir_path = create_dir(str(CHECKPOINT_DIR) + "\\case_headers")
 voter_path  = create_dir(str(CHECKPOINT_DIR) + "\\voter_metrics")
 
-def run_training(data_name=None, extra_name=None):
+def run_training(data_name=None, input_path=None):
     train_dict = {"lr": TRAINING_PARAMS['lr'], 
                     "wd": 1e-3, #Different weight decay for training 
                     "batch_size": TRAINING_PARAMS['batch_size'], 
@@ -21,7 +21,7 @@ def run_training(data_name=None, extra_name=None):
         data_tuple = CER_get_data_case(case_name=case, exo_variable=DATA_PARAMS, 
                                        win=TRAINING_PARAMS['window_size'],
                                        data_name=data_name,
-                                       extra_name=extra_name)
+                                       input_path=input_path)
         model = get_model_inst(TRAINING_PARAMS['input_dim'],
                         TRAINING_PARAMS['window_size'],
                         TRAINING_PARAMS['dim_model'],
